@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     android:layout_margin="16dp"
     >
 
@@ -27,9 +26,8 @@
                 <ImageView
                     android:id="@+id/cart_prod_image"
                     android:layout_width="170dp"
-                    android:layout_height="240dp"
+                    android:layout_height="wrap_content"
                     android:contentDescription="@string/prod_name"
-                    android:scaleType="centerCrop"
                     android:src="@drawable/ar_selfie" />
 
                 <LinearLayout
@@ -64,19 +62,9 @@
                         android:textColor="#000"
                         android:textSize="20sp"
                         android:layout_margin="10dp"
-                        android:textStyle="normal" />
+                        android:textStyle="normal|bold" />
 
-                    <TextView
-                        android:id="@+id/cart_prod_description"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:text="@string/description1"
-                        android:textAllCaps="false"
-                        android:textColor="@color/grey"
-                        android:layout_margin="10dp"
-                        android:textSize="20sp"
-                        android:textStyle="normal" />
+
 
 
 
@@ -86,19 +74,27 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/add_to_wish_cart"
+
+            <TextView
+                android:id="@+id/cart_prod_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp">
+                android:background="@android:color/transparent"
+                android:text="@string/description1"
+                android:textAllCaps="false"
+                android:textColor="@color/grey"
+                android:layout_margin="10dp"
+                android:textSize="20sp"
+                android:textStyle="normal" />
+
 
                 <LinearLayout
                     android:id="@+id/addTo_wishList"
-                    android:layout_width="175dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:orientation="horizontal"
                     android:padding="10dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/button_box_purple"
                     >
 
@@ -115,7 +111,7 @@
                 android:layout_height="match_parent"
                 android:text="@string/wishlist"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textAllCaps="true"
                 android:textColor="#FFF"
               android:textAlignment="center"
@@ -127,12 +123,12 @@
 
                 <LinearLayout
                     android:id="@+id/remove_cart"
-                    android:layout_width="175dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:orientation="horizontal"
                     android:padding="10dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/button_box_purple"
-                    android:layout_marginStart="10dp"
                     >
 
                     <ImageView
@@ -148,7 +144,7 @@
                         android:layout_height="match_parent"
                         android:text="@string/remove_cart"
                         android:textStyle="bold"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:textAllCaps="true"
                         android:textColor="#FFF"
                         android:textAlignment="center"
@@ -157,12 +153,7 @@
 
 
                 </LinearLayout>
-
-
-
-            </LinearLayout>
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

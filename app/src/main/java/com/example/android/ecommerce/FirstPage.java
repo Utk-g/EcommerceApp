@@ -194,11 +194,11 @@ public class FirstPage extends AppCompatActivity
             overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         }
 //
-//        else if (id == R.id.nav_reset_pswrd)
-//        {
-//            startActivity(new Intent(FirstPage.this,ChangePassword.class));
-//            overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-//        }
+        else if (id == R.id.nav_profile)
+        {
+            startActivity(new Intent(FirstPage.this,ProfileActivity.class));
+            overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+        }
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

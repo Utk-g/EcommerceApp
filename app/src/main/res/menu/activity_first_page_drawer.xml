@@ -30,6 +30,11 @@
             android:title="My Cart" />
 
         <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_next_week_black_24dp"
+            android:title="Profile" />
+
+        <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_input_black_24dp"
             android:title="Logout" />
@@ -43,10 +48,6 @@
                 android:icon="@drawable/ic_call_black_24dp"
                 android:title="Help Centre" />
 
-            <!--<item-->
-                <!--android:id="@+id/nav_reset_pswrd"-->
-                <!--android:icon="@drawable/ic_remove_red_eye_black_24dp"-->
-                <!--android:title="Reset Password" />-->
         </menu>
     </item>
 

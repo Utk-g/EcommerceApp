@@ -28,7 +28,6 @@
                 android:layout_width="170dp"
                 android:layout_height="200dp"
                 android:contentDescription="@string/prod_name"
-                android:scaleType="centerCrop"
                 android:src="@drawable/ar_selfie" />
 
             <LinearLayout
@@ -64,18 +63,9 @@
                     android:textAllCaps="false"
                     android:textColor="#000"
                     android:textSize="20sp"
-                    android:textStyle="normal" />
-                <TextView
-                    android:id="@+id/my_order_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:text="@string/description1"
+                    android:textStyle="normal|bold" />
 
-                    android:textAllCaps="false"
-                    android:textColor="@color/grey"
-                    android:textSize="20sp"
-                    android:textStyle="normal" />
+
 
                 <TextView
                     android:id="@+id/order_date"
@@ -111,6 +101,18 @@
 
 
         </LinearLayout>
+
+            <TextView
+                android:id="@+id/my_order_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:layout_marginTop="20dp"
+                android:text="@string/description1"
+                android:textAllCaps="false"
+                android:textColor="@color/grey"
+                android:textSize="20sp"
+                android:textStyle="normal" />
 
         </LinearLayout>
 

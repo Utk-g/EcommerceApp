@@ -27,14 +27,13 @@
                 <ImageView
                     android:id="@+id/wish_prod_image"
                     android:layout_width="170dp"
-                    android:layout_height="240dp"
+                    android:layout_height="wrap_content"
                     android:contentDescription="@string/prod_name"
-                    android:scaleType="centerCrop"
                     android:src="@drawable/ar_selfie" />
 
                 <LinearLayout
                     android:layout_width="170dp"
-                    android:layout_height="240dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:orientation="vertical"
                     android:padding="10dp">
@@ -50,7 +49,7 @@
                         android:textAllCaps="false"
                         android:textColor="#000"
                         android:layout_margin="10dp"
-                        android:textSize="20sp"
+                        android:textSize="22sp"
                         android:textStyle="normal" />
 
 
@@ -66,36 +65,16 @@
                         android:textSize="20sp"
                         android:layout_margin="10dp"
                         android:textStyle="normal" />
-                    <TextView
-                        android:id="@+id/wish_prod_description"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:text="@string/description1"
-                        android:textAllCaps="false"
-                        android:layout_margin="10dp"
-                        android:textColor="@color/grey"
-                        android:textSize="20sp"
-                        android:textStyle="normal" />
-
-
-
 
                 </LinearLayout>
 
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/add_to_cart_wish"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp">
 
                 <LinearLayout
                     android:id="@+id/addTo_Cart"
-                    android:layout_width="170dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:orientation="horizontal"
                     android:padding="10dp"
@@ -115,7 +94,7 @@
                         android:layout_height="match_parent"
                         android:text="@string/cart"
                         android:textStyle="bold"
-                        android:textSize="20sp"
+                        android:textSize="16sp"
                         android:textAllCaps="true"
                         android:textColor="#FFF"
                         android:textAlignment="center"
@@ -128,12 +107,12 @@
 
                 <LinearLayout
                     android:id="@+id/remove_wish"
-                    android:layout_width="170dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:orientation="horizontal"
                     android:padding="10dp"
                     android:background="@drawable/button_box_purple"
-                    android:layout_marginStart="10dp"
+                   android:layout_marginTop="20dp"
                     >
 
                     <ImageView
@@ -149,7 +128,7 @@
                         android:layout_height="match_parent"
                         android:text="@string/remove_cart"
                         android:textStyle="bold"
-                        android:textSize="20sp"
+                        android:textSize="16sp"
                         android:textAllCaps="true"
                         android:textColor="#FFF"
                         android:textAlignment="center"
@@ -160,7 +139,7 @@
                 </LinearLayout>
 
             </LinearLayout>
-        </LinearLayout>
+
 
     </androidx.cardview.widget.CardView>
 
