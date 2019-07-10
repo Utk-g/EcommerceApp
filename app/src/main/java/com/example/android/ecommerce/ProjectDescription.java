@@ -110,7 +110,7 @@ public class ProjectDescription extends AppCompatActivity {
         profilePic=(ImageView)findViewById(R.id.profile_pic);
 
 
-        Mainref.addValueEventListener(new ValueEventListener() {
+        Mainref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                if((dataSnapshot.child("Users").child("UserInfo").child(user.getUid()).exists()))
@@ -323,7 +323,7 @@ public class ProjectDescription extends AppCompatActivity {
         userClass.setDesignation(designation);
         userClass.setWorktype(work_type);
         userClass.setPicUri(downloadImageUri);
-        Mainref.addValueEventListener(new ValueEventListener() {
+        Mainref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 Mainref.child("Users").child("UserInfo").child(uid).setValue(userClass)

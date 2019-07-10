@@ -1,8 +1,12 @@
 package com.example.android.ecommerce;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+
+import com.example.android.ecommerce.classesInfo.UserInfoForDatabase;
+import com.firebase.ui.auth.data.model.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,6 +21,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.ecommerce.Adapters.CategoryAdapter;
@@ -24,14 +30,20 @@ import com.example.android.ecommerce.classesInfo.Category;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FirstPage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,6 +54,10 @@ public class FirstPage extends AppCompatActivity
     CategoryAdapter adapter;
     FirebaseDatabase database;
     List<Category> categories;
+    TextView name;
+    FirebaseUser userA = FirebaseAuth.getInstance().getCurrentUser();
+    UserInfoForDatabase user=new UserInfoForDatabase();
+    CircleImageView profilepic;
 
 
 
@@ -67,6 +83,8 @@ public class FirstPage extends AppCompatActivity
         recyclerView=(RecyclerView)findViewById(R.id.recycler_view_home);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         categories=new ArrayList<>();
+        profilepic=(CircleImageView)findViewById(R.id.profile_image);
+        name=(TextView)findViewById(R.id.user_profile_name);
         DatabaseReference dbCategory=FirebaseDatabase.getInstance().getReference("Categories");
 
         dbCategory.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -97,7 +115,34 @@ public class FirstPage extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+//        DatabaseReference userInfo = FirebaseDatabase.getInstance().getReference();
+//        //final UserInfoForDatabase user=new UserInfoForDatabase();
+//        userInfo.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                if(dataSnapshot.child("Users").child("UserInfo").child(userA.getUid()).exists())
+//                {
+//                    PutNameAndImage(dataSnapshot);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//            }
+//        });
+
     }
+
+//    private void PutNameAndImage(DataSnapshot dataSnapshot) {
+//        for(DataSnapshot ds:dataSnapshot.child("Users").getChildren())
+//        {
+//            user=dataSnapshot.child("Users").child("UserInfo").child(userA.getUid()).getValue(UserInfoForDatabase.class);
+//            Picasso.get().load(Uri.parse(user.getPicUri())).into(profilepic);
+//            name.setText(user.getName());
+//        }
+//
+//    }
 
     @Override
     public void onBackPressed() {
@@ -196,7 +241,7 @@ public class FirstPage extends AppCompatActivity
 //
         else if (id == R.id.nav_profile)
         {
-            startActivity(new Intent(FirstPage.this,ProfileActivity.class));
+            startActivity(new Intent(FirstPage.this,ProjectDescription.class));
             overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         }
 

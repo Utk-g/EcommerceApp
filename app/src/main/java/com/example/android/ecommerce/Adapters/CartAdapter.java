@@ -118,7 +118,40 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 });
             }
         });
+        cartViewHolder.remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                removeCart();
 
+            }
+
+            private void removeCart() {
+                final DatabaseReference cartref=productdb.getReference().child("Cart");
+
+                cartref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        cartref.child(user.getUid()).child(product.getName()).removeValue()
+
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful())
+                                        {
+                                            Toast.makeText(context, "Removed Successfully Please Reopen The page", Toast.LENGTH_LONG).show();
+                                        }
+                                    }
+                                });
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+        });
     }
 
 
@@ -134,7 +167,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         ImageView imageView;
         TextView textViewName, textViewBrand, textViewBuy, textViewPrice, description;
         CardView productLayout;
-        LinearLayout addtoWishlist;
+        LinearLayout addtoWishlist,remove;
         public CartViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -145,7 +178,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             description=itemView.findViewById(R.id.cart_prod_description);
             addtoWishlist=itemView.findViewById(R.id.addTo_wishList);
             //textViewBuy=itemView.findViewById(R.id.product_buy_button);
-
+            remove=itemView.findViewById(R.id.remove_cart);
         }
     }
 }

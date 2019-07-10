@@ -2,7 +2,14 @@ package com.example.android.ecommerce;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +30,7 @@ public class Mycart extends AppCompatActivity {
     RecyclerView recyclerView;
     CartAdapter adapter;
     FirebaseDatabase database;
+    TextView buy;
     List<Product> productList;
     FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
 
@@ -53,7 +61,16 @@ public class Mycart extends AppCompatActivity {
 
             }
         });
-
-
+    }
+    public void buy(View view)
+    {
+        if(!(productList.size()==0))
+        {
+        startActivity(new Intent(Mycart.this,ProjectDescription.class));
+        }
+        else
+        {
+            Toast.makeText(this, "Please add somthing in cart", Toast.LENGTH_SHORT).show();
+        }
     }
 }
