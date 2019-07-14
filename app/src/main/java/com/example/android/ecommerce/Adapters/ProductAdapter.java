@@ -65,7 +65,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         //productViewHolder.textViewBrand.setText(product.getProd_brand());
         //productViewHolder.textViewBuy.setText(product.getBuy_button());
         productViewHolder.textViewPrice.setText(String.valueOf(product.getPrice()));
-        productViewHolder.description.setText(product.getDescription());
+        //productViewHolder.description.setText(product.getDescription());
         Picasso.get().load(uri).into(productViewHolder.imageView);
         productViewHolder.productLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,116 +80,116 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         });
 
        // productViewHolder.setImageDrawable(context.getResources().getDrawable(product.getImage(), null));
-        productViewHolder.wishlist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addToWishlist();
-                loadingbar.setTitle("Adding To Wishlist");
-                loadingbar.setMessage("Please Wait");
-                loadingbar.show();
-            }
-
-            private void addToWishlist() {
-                final DatabaseReference wishRef=productdb.getReference().child("Wishlist");
-
-                wishRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if(dataSnapshot.child(user.getUid()).child(product.getName()).exists())
-                        {
-                            Toast.makeText(context, "Product Already in Wishlist", Toast.LENGTH_SHORT).show();
-                            loadingbar.dismiss();
-                        }
-                        else
-                        {
-                            final HashMap<String,Object> cartData=new HashMap<>();
-                            cartData.put("Name",product.getName());
-                            cartData.put("Description",product.getDescription());
-                            cartData.put("Price",product.getPrice());
-                            cartData.put("image_uri",product.getImage_uri());
-                            cartData.put("Category",product.getCategory());
-                            wishRef.child(user.getUid()).child(product.getName()).updateChildren(cartData)
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if(task.isSuccessful())
-                                            {
-                                                Toast.makeText(context, "Added To Wishlist", Toast.LENGTH_SHORT).show();
-                                                loadingbar.dismiss();
-                                                cartData.clear();
-                                            }
-                                            else
-                                            {
-                                                Toast.makeText(context, "Network Error", Toast.LENGTH_SHORT).show();
-                                                loadingbar.dismiss();
-                                            }
-                                        }
-                                    });
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-            }
-        });
-        productViewHolder.cart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addToCart();
-                loadingbar.setTitle("Adding To Cart");
-                loadingbar.setMessage("Please Wait");
-                loadingbar.show();
-            }
-
-            private void addToCart() {
-                final DatabaseReference cartref=productdb.getReference().child("Cart");
-
-                cartref.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if(dataSnapshot.child(user.getUid()).child(product.getName()).exists())
-                        {
-                            Toast.makeText(context, "Product Already in Cart", Toast.LENGTH_SHORT).show();
-                            loadingbar.dismiss();
-                        }
-                        else
-                        {
-                            final HashMap<String,Object> cartData=new HashMap<>();
-                            cartData.put("Name",product.getName());
-                            cartData.put("Description",product.getDescription());
-                            cartData.put("Price",product.getPrice());
-                            cartData.put("image_uri",product.getImage_uri());
-                            cartData.put("Category",product.getCategory());
-                            cartref.child(user.getUid()).child(product.getName()).updateChildren(cartData)
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if(task.isSuccessful())
-                                            {
-                                                Toast.makeText(context, "Added To Cart", Toast.LENGTH_SHORT).show();
-                                                loadingbar.dismiss();
-                                                cartData.clear();
-                                            }
-                                            else
-                                            {
-                                                Toast.makeText(context, "Network Error", Toast.LENGTH_SHORT).show();
-                                                loadingbar.dismiss();
-                                            }
-                                        }
-                                    });
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-            }
-        });
+//        productViewHolder.wishlist.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                addToWishlist();
+//                loadingbar.setTitle("Adding To Wishlist");
+//                loadingbar.setMessage("Please Wait");
+//                loadingbar.show();
+//            }
+//
+//            private void addToWishlist() {
+//                final DatabaseReference wishRef=productdb.getReference().child("Wishlist");
+//
+//                wishRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        if(dataSnapshot.child(user.getUid()).child(product.getName()).exists())
+//                        {
+//                            Toast.makeText(context, "Product Already in Wishlist", Toast.LENGTH_SHORT).show();
+//                            loadingbar.dismiss();
+//                        }
+//                        else
+//                        {
+//                            final HashMap<String,Object> cartData=new HashMap<>();
+//                            cartData.put("Name",product.getName());
+//                            cartData.put("Description",product.getDescription());
+//                            cartData.put("Price",product.getPrice());
+//                            cartData.put("image_uri",product.getImage_uri());
+//                            cartData.put("Category",product.getCategory());
+//                            wishRef.child(user.getUid()).child(product.getName()).updateChildren(cartData)
+//                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                        @Override
+//                                        public void onComplete(@NonNull Task<Void> task) {
+//                                            if(task.isSuccessful())
+//                                            {
+//                                                Toast.makeText(context, "Added To Wishlist", Toast.LENGTH_SHORT).show();
+//                                                loadingbar.dismiss();
+//                                                cartData.clear();
+//                                            }
+//                                            else
+//                                            {
+//                                                Toast.makeText(context, "Network Error", Toast.LENGTH_SHORT).show();
+//                                                loadingbar.dismiss();
+//                                            }
+//                                        }
+//                                    });
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                    }
+//                });
+//            }
+//        });
+//        productViewHolder.cart.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                addToCart();
+//                loadingbar.setTitle("Adding To Cart");
+//                loadingbar.setMessage("Please Wait");
+//                loadingbar.show();
+//            }
+//
+//            private void addToCart() {
+//                final DatabaseReference cartref=productdb.getReference().child("Cart");
+//
+//                cartref.addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        if(dataSnapshot.child(user.getUid()).child(product.getName()).exists())
+//                        {
+//                            Toast.makeText(context, "Product Already in Cart", Toast.LENGTH_SHORT).show();
+//                            loadingbar.dismiss();
+//                        }
+//                        else
+//                        {
+//                            final HashMap<String,Object> cartData=new HashMap<>();
+//                            cartData.put("Name",product.getName());
+//                            cartData.put("Description",product.getDescription());
+//                            cartData.put("Price",product.getPrice());
+//                            cartData.put("image_uri",product.getImage_uri());
+//                            cartData.put("Category",product.getCategory());
+//                            cartref.child(user.getUid()).child(product.getName()).updateChildren(cartData)
+//                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                        @Override
+//                                        public void onComplete(@NonNull Task<Void> task) {
+//                                            if(task.isSuccessful())
+//                                            {
+//                                                Toast.makeText(context, "Added To Cart", Toast.LENGTH_SHORT).show();
+//                                                loadingbar.dismiss();
+//                                                cartData.clear();
+//                                            }
+//                                            else
+//                                            {
+//                                                Toast.makeText(context, "Network Error", Toast.LENGTH_SHORT).show();
+//                                                loadingbar.dismiss();
+//                                            }
+//                                        }
+//                                    });
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                    }
+//                });
+//            }
+//        });
     }
 
     @Override
@@ -200,7 +200,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     class ProductViewHolder extends RecyclerView.ViewHolder{
 
     ImageView imageView;
-    TextView textViewName, textViewBrand, textViewBuy, textViewPrice, description;
+    TextView textViewName, textViewBrand, textViewBuy, textViewPrice;//description
     CardView productLayout;
     Button cart,wishlist;
 
@@ -212,11 +212,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         //textViewBrand=itemView.findViewById(R.id.product_brand);
         textViewName=itemView.findViewById(R.id.product_ViewTitle);
         textViewPrice=itemView.findViewById(R.id.product_ViewPrice);
-        description=itemView.findViewById(R.id.product_ViewShortDesc);
+        //description=itemView.findViewById(R.id.product_ViewShortDesc);
         productLayout=itemView.findViewById(R.id.ProductLayout);
        //textViewBuy=itemView.findViewById(R.id.product_buy_button);
-        cart=itemView.findViewById(R.id.product_cart);
-        wishlist=itemView.findViewById(R.id.product_wish);
+        //cart=itemView.findViewById(R.id.product_cart);
+        //wishlist=itemView.findViewById(R.id.product_wish);
     }
 }
 
