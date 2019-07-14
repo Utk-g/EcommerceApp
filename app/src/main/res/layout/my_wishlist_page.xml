@@ -32,7 +32,7 @@
                     android:src="@drawable/ar_selfie" />
 
                 <LinearLayout
-                    android:layout_width="170dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:orientation="vertical"
@@ -40,9 +40,8 @@
 
                     <TextView
                         android:id="@+id/wish_prod_name"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
                         android:background="@android:color/transparent"
                         android:fontFamily="@font/rajdhani_medium"
                         android:text="@string/prod_name"
@@ -55,7 +54,7 @@
 
                     <TextView
                         android:id="@+id/wish_prod_price"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:background="@android:color/transparent"

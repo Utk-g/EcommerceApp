@@ -2,7 +2,12 @@ package com.example.android.ecommerce;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +29,7 @@ public class MyOrders extends AppCompatActivity {
     OrderAdapter adapter;
     List<Order> orderList;
     Order order;
+    TextView shop, help;
     FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
@@ -33,6 +39,25 @@ public class MyOrders extends AppCompatActivity {
         recyclerView=findViewById(R.id.my_orders_recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         orderList =new ArrayList<>();
+
+        shop= findViewById(R.id.shop_more);
+        help= findViewById(R.id.help_centre);
+
+        shop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyOrders.this, FirstPage.class);
+                startActivity(intent);
+            }
+        });
+
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyOrders.this, help_centre.class);
+                startActivity(intent);
+            }
+        });
 
         DatabaseReference dbReference= FirebaseDatabase.getInstance().getReference("Orders");
 

@@ -70,7 +70,7 @@ public class Mycart extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(this, "Please add somthing in cart", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please add something in cart", Toast.LENGTH_SHORT).show();
         }
     }
 }
