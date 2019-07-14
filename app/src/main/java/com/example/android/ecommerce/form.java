@@ -34,7 +34,7 @@ public class form extends AppCompatActivity {
     private String ProductName,CategoryName;
     private TextView productName,description,price;
     private  ImageView productImage;
-    private LinearLayout Cart,Wishlist;
+    private TextView Cart,Wishlist;
     private Product product;
     private FirebaseDatabase productdb=FirebaseDatabase.getInstance();
     private DatabaseReference productref=productdb.getReference().child("Categories");

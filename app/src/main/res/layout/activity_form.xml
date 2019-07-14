@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#FFF"
-    android:orientation="vertical">
+   >
 
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFF"
@@ -107,22 +105,22 @@
                 android:fontFamily="@font/rajdhani_medium"
                 android:text="@string/cat_desc"
                 android:textAllCaps="false"
-                android:textColor="#000"
+                android:textColor="@color/grey"
                 android:textSize="20sp"
                 android:textStyle="normal" />
 
-                <TextView
-                    android:id="@+id/Product_Description_content"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@android:color/transparent"
-                    android:fontFamily="@font/rajdhani_medium"
-                    android:text="@string/cat_desc_content"
-                    android:textAllCaps="false"
-                    android:textColor="@color/grey"
-                    android:textSize="17sp"
-                    android:textStyle="normal" />
+                <!--<TextView-->
+                    <!--android:id="@+id/Product_Description_content"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:background="@android:color/transparent"-->
+                    <!--android:fontFamily="@font/rajdhani_medium"-->
+                    <!--android:text="@string/cat_desc_content"-->
+                    <!--android:textAllCaps="false"-->
+                    <!--android:textColor="@color/grey"-->
+                    <!--android:textSize="17sp"-->
+                    <!--android:textStyle="normal" />-->
 
 
             </LinearLayout>
@@ -141,93 +139,39 @@
                 android:elevation="20dp"
                 android:src="@drawable/cart_icon" />
         </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
-
-    <androidx.cardview.widget.CardView
-    android:id="@+id/card_view_add_product"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/card_view"
-        android:padding="10dp"
-    card_view:cardBackgroundColor="#FFF"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-        >
 
 
-    <LinearLayout
-    android:id="@+id/linear_layout_choose_button"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/linear_layout_size_circles"
-    android:background="@android:color/transparent"
-    android:orientation="horizontal"
-    android:layout_margin="10dp">
 
-    <LinearLayout
-    android:id="@+id/wishlist_btn"
-    android:layout_width="190dp"
-    android:layout_height="50dp"
-    android:background="@drawable/button_outline"
-    android:orientation="horizontal">
-
-        <ImageView
-
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="10dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/wishlist"
-            android:src="@drawable/_purple" />
 
     <TextView
-    android:id="@+id/wishlist_txtview"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_vertical"
-    android:layout_marginStart="20dp"
+    android:id="@+id/wishlist_btn"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
     android:text="@string/wishlist"
     android:textAlignment="center"
     android:textAllCaps="true"
     android:textColor="@color/color_purple"
     android:textSize="20sp"
-    android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <LinearLayout
-    android:id="@+id/cart_btn"
-    android:layout_width="190dp"
-    android:layout_height="50dp"
-    android:layout_marginStart="10dp"
-    android:background="@color/color_purple"
-    android:orientation="horizontal">
-
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="10dp"
-        android:background="@android:color/transparent"
-    android:contentDescription="@string/add_cart"
-        android:src="@drawable/cart_icon"
-    />
-
-    <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_vertical|center_horizontal"
-    android:text="@string/add_cart"
-        android:textAlignment="center"
-    android:textAllCaps="true"
-    android:textColor="#FFF"
-    android:textSize="20sp"
     android:textStyle="bold"
+        android:background="@drawable/button_outline"
+        android:gravity="center_vertical"
+        android:layout_margin="10dp"/>
 
-       />
+
+        <TextView
+            android:id="@+id/cart_btn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/cart"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:background="@color/color_purple"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:layout_margin="10dp"/>
 
     </LinearLayout>
-    </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</ScrollView>
