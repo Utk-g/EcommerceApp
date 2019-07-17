@@ -29,6 +29,7 @@ public class help_centre extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(help_centre.this, FirstPage.class);
+                startActivity(intent);
             }
         });
 
