@@ -51,6 +51,10 @@ public class Mycart extends AppCompatActivity {
                     Product product=ds.getValue(Product.class);
                     productList.add(product);
                 }
+                if(productList.size()==0)
+                {
+                    Toast.makeText(Mycart.this, "Please add something in the cart", Toast.LENGTH_SHORT).show();
+                }
                 adapter=new CartAdapter(Mycart.this,productList);
                 recyclerView.setAdapter(adapter);
             }

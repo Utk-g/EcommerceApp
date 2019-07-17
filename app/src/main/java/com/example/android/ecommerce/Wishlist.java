@@ -3,6 +3,8 @@ package com.example.android.ecommerce;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,6 +45,10 @@ public class Wishlist extends AppCompatActivity {
                 {
                     Product product=ds.getValue(Product.class);
                     productList.add(product);
+                }
+                if(productList.size()==0)
+                {
+                    Toast.makeText(Wishlist.this, "Please add something in the wishlist", Toast.LENGTH_SHORT).show();
                 }
                 adapter=new MyWishlistAdapter(Wishlist.this,productList);
 //                adapter.notifyItemChanged(productList.indexOf(product),productList.size());
