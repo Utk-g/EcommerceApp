@@ -149,6 +149,10 @@ public class MyWishlistAdapter extends RecyclerView.Adapter<MyWishlistAdapter.My
                 });
             }
         });
+        if(productList.size()==0)
+        {
+            Toast.makeText(context1, "Please add something in the wishlist", Toast.LENGTH_SHORT).show();
+        }
 
 
     }
